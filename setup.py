@@ -31,7 +31,7 @@ setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     # Versioning
-    version=versioneer.get_version(),
+    version="3.0.10",  # versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     # Package setup
     packages=find_packages(where="src"),
