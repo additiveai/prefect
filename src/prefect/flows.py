@@ -535,7 +535,11 @@ class Flow(Generic[P, R]):
 
         def resolve_block_reference(data: Any) -> Any:
             if isinstance(data, dict) and "$ref" in data:
-                return Block.load_from_ref(data["$ref"], _sync=True)
+                try:
+                    return Block.load_from_ref(data["$ref"], _sync=True)
+                except ValueError:
+                    # https://github.com/PrefectHQ/prefect/issues/15763
+                    pass
             return data
 
         try:
